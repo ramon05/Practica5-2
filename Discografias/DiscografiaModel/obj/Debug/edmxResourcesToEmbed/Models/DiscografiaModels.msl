@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DiscografiasDBModelStoreContainer" CdmEntityContainer="DiscografiasDBEntities">
+    <EntitySetMapping Name="Compañia">
+      <EntityTypeMapping TypeName="DiscografiasDBModel.Compañia">
+        <MappingFragment StoreEntitySet="Compañia">
+          <ScalarProperty Name="Id_Compañia" ColumnName="Id_Compañia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grabacion">
+      <EntityTypeMapping TypeName="DiscografiasDBModel.Grabacion">
+        <MappingFragment StoreEntitySet="Grabacion">
+          <ScalarProperty Name="Id_Grabacion" ColumnName="Id_Grabacion" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Num_Tema" ColumnName="Num_Tema" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Compañia_id" ColumnName="Compañia_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Interprete">
+      <EntityTypeMapping TypeName="DiscografiasDBModel.Interprete">
+        <MappingFragment StoreEntitySet="Interprete">
+          <ScalarProperty Name="Id_Interprete" ColumnName="Id_Interprete" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Participacions">
+      <EntityTypeMapping TypeName="DiscografiasDBModel.Participacion">
+        <MappingFragment StoreEntitySet="Participacion">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Interprete_Id" ColumnName="Interprete_Id" />
+          <ScalarProperty Name="Grabacion_Id" ColumnName="Grabacion_Id" />
+          <ScalarProperty Name="ParticipacionId" ColumnName="ParticipacionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

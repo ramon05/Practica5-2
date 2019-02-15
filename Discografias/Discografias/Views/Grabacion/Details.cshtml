@@ -1,0 +1,50 @@
+﻿@model DiscografiaModel.Models.Grabacion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Grabacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Num_Tema)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Num_Tema)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Compañia.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Compañia.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Grabacion }, new {@class="btn btn-primary" }) 
+    @Html.ActionLink("Back to List", "Index", null, new {@class="btn btn-success" })
+</p>

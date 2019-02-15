@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DiscografiasDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Compañia">
+          <Key>
+            <PropertyRef Name="Id_Compañia" />
+          </Key>
+          <Property Name="Id_Compañia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Grabacion">
+          <Key>
+            <PropertyRef Name="Id_Grabacion" />
+          </Key>
+          <Property Name="Id_Grabacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Num_Tema" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Compañia_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Interprete">
+          <Key>
+            <PropertyRef Name="Id_Interprete" />
+          </Key>
+          <Property Name="Id_Interprete" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Participacion">
+          <Key>
+            <PropertyRef Name="ParticipacionId" />
+          </Key>
+          <Property Name="ParticipacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Grabacion_Id" Type="int" Nullable="false" />
+          <Property Name="Interprete_Id" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="fk_Compañia">
+          <End Role="Compañia" Type="Self.Compañia" Multiplicity="1" />
+          <End Role="Grabacion" Type="Self.Grabacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compañia">
+              <PropertyRef Name="Id_Compañia" />
+            </Principal>
+            <Dependent Role="Grabacion">
+              <PropertyRef Name="Compañia_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrabacionId">
+          <End Role="Grabacion" Type="Self.Grabacion" Multiplicity="1" />
+          <End Role="Participacion" Type="Self.Participacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grabacion">
+              <PropertyRef Name="Id_Grabacion" />
+            </Principal>
+            <Dependent Role="Participacion">
+              <PropertyRef Name="Grabacion_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InterpreteId">
+          <End Role="Interprete" Type="Self.Interprete" Multiplicity="1" />
+          <End Role="Participacion" Type="Self.Participacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Interprete">
+              <PropertyRef Name="Id_Interprete" />
+            </Principal>
+            <Dependent Role="Participacion">
+              <PropertyRef Name="Interprete_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DiscografiasDBModelStoreContainer">
+          <EntitySet Name="Compañia" EntityType="Self.Compañia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grabacion" EntityType="Self.Grabacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Interprete" EntityType="Self.Interprete" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Participacion" EntityType="Self.Participacion" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_Compañia" Association="Self.fk_Compañia">
+            <End Role="Compañia" EntitySet="Compañia" />
+            <End Role="Grabacion" EntitySet="Grabacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrabacionId" Association="Self.FK_GrabacionId">
+            <End Role="Grabacion" EntitySet="Grabacion" />
+            <End Role="Participacion" EntitySet="Participacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InterpreteId" Association="Self.FK_InterpreteId">
+            <End Role="Interprete" EntitySet="Interprete" />
+            <End Role="Participacion" EntitySet="Participacion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DiscografiasDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Compañia">
+          <Key>
+            <PropertyRef Name="Id_Compañia" />
+          </Key>
+          <Property Name="Id_Compañia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Grabacion" Relationship="Self.fk_Compañia" FromRole="Compañia" ToRole="Grabacion" />
+        </EntityType>
+        <EntityType Name="Grabacion">
+          <Key>
+            <PropertyRef Name="Id_Grabacion" />
+          </Key>
+          <Property Name="Id_Grabacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Num_Tema" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Compañia_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Compañia" Relationship="Self.fk_Compañia" FromRole="Grabacion" ToRole="Compañia" />
+          <NavigationProperty Name="Participacions" Relationship="DiscografiasDBModel.FK_GrabacionId" FromRole="Grabacion" ToRole="Participacion" />
+        </EntityType>
+        <EntityType Name="Interprete">
+          <Key>
+            <PropertyRef Name="Id_Interprete" />
+          </Key>
+          <Property Name="Id_Interprete" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Participacions" Relationship="DiscografiasDBModel.FK_InterpreteId" FromRole="Interprete" ToRole="Participacion" />
+        </EntityType>
+        <Association Name="fk_Compañia">
+          <End Role="Compañia" Type="Self.Compañia" Multiplicity="1" />
+          <End Role="Grabacion" Type="Self.Grabacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compañia">
+              <PropertyRef Name="Id_Compañia" />
+            </Principal>
+            <Dependent Role="Grabacion">
+              <PropertyRef Name="Compañia_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DiscografiasDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Compañia" EntityType="Self.Compañia" />
+          <EntitySet Name="Grabacion" EntityType="Self.Grabacion" />
+          <EntitySet Name="Interprete" EntityType="Self.Interprete" />
+          <AssociationSet Name="fk_Compañia" Association="Self.fk_Compañia">
+            <End Role="Compañia" EntitySet="Compañia" />
+            <End Role="Grabacion" EntitySet="Grabacion" />
+          </AssociationSet>
+          <EntitySet Name="Participacions" EntityType="DiscografiasDBModel.Participacion" />
+          <AssociationSet Name="FK_GrabacionId" Association="DiscografiasDBModel.FK_GrabacionId">
+            <End Role="Grabacion" EntitySet="Grabacion" />
+            <End Role="Participacion" EntitySet="Participacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InterpreteId" Association="DiscografiasDBModel.FK_InterpreteId">
+            <End Role="Interprete" EntitySet="Interprete" />
+            <End Role="Participacion" EntitySet="Participacions" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Participacion">
+          <Key>
+            <PropertyRef Name="ParticipacionId" />
+          </Key>
+          <Property Name="ParticipacionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Grabacion_Id" Type="Int32" Nullable="false" />
+          <Property Name="Interprete_Id" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Grabacion" Relationship="DiscografiasDBModel.FK_GrabacionId" FromRole="Participacion" ToRole="Grabacion" />
+          <NavigationProperty Name="Interprete" Relationship="DiscografiasDBModel.FK_InterpreteId" FromRole="Participacion" ToRole="Interprete" />
+        </EntityType>
+        <Association Name="FK_GrabacionId">
+          <End Type="DiscografiasDBModel.Grabacion" Role="Grabacion" Multiplicity="1" />
+          <End Type="DiscografiasDBModel.Participacion" Role="Participacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grabacion">
+              <PropertyRef Name="Id_Grabacion" />
+            </Principal>
+            <Dependent Role="Participacion">
+              <PropertyRef Name="Grabacion_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InterpreteId">
+          <End Type="DiscografiasDBModel.Interprete" Role="Interprete" Multiplicity="1" />
+          <End Type="DiscografiasDBModel.Participacion" Role="Participacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Interprete">
+              <PropertyRef Name="Id_Interprete" />
+            </Principal>
+            <Dependent Role="Participacion">
+              <PropertyRef Name="Interprete_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DiscografiasDBModelStoreContainer" CdmEntityContainer="DiscografiasDBEntities">
+          <EntitySetMapping Name="Compañia">
+            <EntityTypeMapping TypeName="DiscografiasDBModel.Compañia">
+              <MappingFragment StoreEntitySet="Compañia">
+                <ScalarProperty Name="Id_Compañia" ColumnName="Id_Compañia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grabacion">
+            <EntityTypeMapping TypeName="DiscografiasDBModel.Grabacion">
+              <MappingFragment StoreEntitySet="Grabacion">
+                <ScalarProperty Name="Id_Grabacion" ColumnName="Id_Grabacion" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Num_Tema" ColumnName="Num_Tema" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Compañia_id" ColumnName="Compañia_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Interprete">
+            <EntityTypeMapping TypeName="DiscografiasDBModel.Interprete">
+              <MappingFragment StoreEntitySet="Interprete">
+                <ScalarProperty Name="Id_Interprete" ColumnName="Id_Interprete" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participacions">
+            <EntityTypeMapping TypeName="DiscografiasDBModel.Participacion">
+              <MappingFragment StoreEntitySet="Participacion">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Interprete_Id" ColumnName="Interprete_Id" />
+                <ScalarProperty Name="Grabacion_Id" ColumnName="Grabacion_Id" />
+                <ScalarProperty Name="ParticipacionId" ColumnName="ParticipacionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

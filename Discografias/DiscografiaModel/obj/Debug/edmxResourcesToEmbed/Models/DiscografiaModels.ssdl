@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DiscografiasDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Compañia">
+    <Key>
+      <PropertyRef Name="Id_Compañia" />
+    </Key>
+    <Property Name="Id_Compañia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="direccion" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Grabacion">
+    <Key>
+      <PropertyRef Name="Id_Grabacion" />
+    </Key>
+    <Property Name="Id_Grabacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titulo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Num_Tema" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Compañia_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Interprete">
+    <Key>
+      <PropertyRef Name="Id_Interprete" />
+    </Key>
+    <Property Name="Id_Interprete" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Participacion">
+    <Key>
+      <PropertyRef Name="ParticipacionId" />
+    </Key>
+    <Property Name="ParticipacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Grabacion_Id" Type="int" Nullable="false" />
+    <Property Name="Interprete_Id" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="fk_Compañia">
+    <End Role="Compañia" Type="Self.Compañia" Multiplicity="1" />
+    <End Role="Grabacion" Type="Self.Grabacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compañia">
+        <PropertyRef Name="Id_Compañia" />
+      </Principal>
+      <Dependent Role="Grabacion">
+        <PropertyRef Name="Compañia_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GrabacionId">
+    <End Role="Grabacion" Type="Self.Grabacion" Multiplicity="1" />
+    <End Role="Participacion" Type="Self.Participacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grabacion">
+        <PropertyRef Name="Id_Grabacion" />
+      </Principal>
+      <Dependent Role="Participacion">
+        <PropertyRef Name="Grabacion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InterpreteId">
+    <End Role="Interprete" Type="Self.Interprete" Multiplicity="1" />
+    <End Role="Participacion" Type="Self.Participacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Interprete">
+        <PropertyRef Name="Id_Interprete" />
+      </Principal>
+      <Dependent Role="Participacion">
+        <PropertyRef Name="Interprete_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DiscografiasDBModelStoreContainer">
+    <EntitySet Name="Compañia" EntityType="Self.Compañia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Grabacion" EntityType="Self.Grabacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Interprete" EntityType="Self.Interprete" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Participacion" EntityType="Self.Participacion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_Compañia" Association="Self.fk_Compañia">
+      <End Role="Compañia" EntitySet="Compañia" />
+      <End Role="Grabacion" EntitySet="Grabacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GrabacionId" Association="Self.FK_GrabacionId">
+      <End Role="Grabacion" EntitySet="Grabacion" />
+      <End Role="Participacion" EntitySet="Participacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InterpreteId" Association="Self.FK_InterpreteId">
+      <End Role="Interprete" EntitySet="Interprete" />
+      <End Role="Participacion" EntitySet="Participacion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

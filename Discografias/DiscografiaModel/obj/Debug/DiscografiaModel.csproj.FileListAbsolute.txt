@@ -1,0 +1,12 @@
+C:\Users\Ramon\Documents\Diplomado de la Mescyt C#\Unidad 5\Práctica 2-5\Discografias\DiscografiaModel\bin\Debug\DiscografiaModel.dll.config
+C:\Users\Ramon\Documents\Diplomado de la Mescyt C#\Unidad 5\Práctica 2-5\Discografias\DiscografiaModel\bin\Debug\DiscografiaModel.dll
+C:\Users\Ramon\Documents\Diplomado de la Mescyt C#\Unidad 5\Práctica 2-5\Discografias\DiscografiaModel\bin\Debug\DiscografiaModel.pdb
+C:\Users\Ramon\Documents\Diplomado de la Mescyt C#\Unidad 5\Práctica 2-5\Discografias\DiscografiaModel\bin\Debug\EntityFramework.dll
+C:\Users\Ramon\Documents\Diplomado de la Mescyt C#\Unidad 5\Práctica 2-5\Discografias\DiscografiaModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Ramon\Documents\Diplomado de la Mescyt C#\Unidad 5\Práctica 2-5\Discografias\DiscografiaModel\bin\Debug\EntityFramework.xml
+C:\Users\Ramon\Documents\Diplomado de la Mescyt C#\Unidad 5\Práctica 2-5\Discografias\DiscografiaModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Ramon\Documents\Diplomado de la Mescyt C#\Unidad 5\Práctica 2-5\Discografias\DiscografiaModel\obj\Debug\DiscografiaModel.csproj.CoreCompileInputs.cache
+C:\Users\Ramon\Documents\Diplomado de la Mescyt C#\Unidad 5\Práctica 2-5\Discografias\DiscografiaModel\obj\Debug\DiscografiaModel.csproj.CopyComplete
+C:\Users\Ramon\Documents\Diplomado de la Mescyt C#\Unidad 5\Práctica 2-5\Discografias\DiscografiaModel\obj\Debug\DiscografiaModel.dll
+C:\Users\Ramon\Documents\Diplomado de la Mescyt C#\Unidad 5\Práctica 2-5\Discografias\DiscografiaModel\obj\Debug\DiscografiaModel.pdb
+C:\Users\Ramon\Documents\Diplomado de la Mescyt C#\Unidad 5\Práctica 2-5\Discografias\DiscografiaModel\obj\Debug\DiscografiaModel.csprojAssemblyReference.cache

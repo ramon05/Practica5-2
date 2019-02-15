@@ -1,0 +1,42 @@
+﻿@model DiscografiaModel.Models.Participacion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Participacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grabacion.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grabacion.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Interprete.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Interprete.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ParticipacionId }, new {@class="btn btn-primary" }) 
+    @Html.ActionLink("Back to List", "Index",null, new {@class="btn btn-success" })
+</p>

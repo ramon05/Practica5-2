@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="25fdc797fce843cc804e540c79fdf9ed" Name="Diagram1">
+        <EntityTypeShape EntityType="DiscografiasDBModel.Compañia" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiscografiasDBModel.Grabacion" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiscografiasDBModel.Interprete" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="DiscografiasDBModel.fk_Compañia" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DiscografiasDBModel.Participacion" Width="1.5" PointX="5.25" PointY="2.875" />
+        <AssociationConnector Association="DiscografiasDBModel.FK_GrabacionId" />
+        <AssociationConnector Association="DiscografiasDBModel.FK_InterpreteId" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
